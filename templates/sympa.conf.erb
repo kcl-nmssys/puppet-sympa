@@ -1,0 +1,209 @@
+# Puppet managed file
+
+###\\\\ Service description ////###
+domain	<%= scope['sympa::mail_domain'] %>
+listmaster	<%= @listmaster_txt %>
+lang	<%= scope['sympa::language'] %>
+<%- if scope['sympa::supported_lang'].length() > 0 %>
+supported_lang	<%= @supported_lang_txt %>
+<% end -%>
+title	<%= scope['sympa::service_title'] %>
+gecos	<%= scope['sympa::gecos'] %>
+legacy_character_support_feature	<%= scope.call_function('bool2str', scope['sympa::legacy_character_support_feature'], 'on', 'off') %>
+
+###\\\\ Da	ase related ////###
+db_type	<%= scope['sympa::db_type'] %>
+db_host	<%= scope['sympa::db_host'] %>
+db_port	<%= scope['sympa::db_port'] %>
+db_name	<%= scope['sympa::db_name'] %>
+db_user	<%= scope['sympa::db_user'] %>
+db_passwd <%= scope['sympa::db_passwd'] %>
+<%- if scope['sympa::db_env'] %>
+<%= scope['sympa::db_env'] %>
+<% end -%>
+<%- if scope['sympa::db_additional_subscriber_fields'] %>
+<%= scope['sympa::db_additional_subscriber_fields'] %>
+<% end -%>
+<%- if scope['sympa::db_additional_user_fields'] %>
+<%= scope['sympa::db_additional_user_fields'] %>
+<% end -%>
+
+###\\\\ System log ////###
+syslog	<%= scope['sympa::syslog'] %>
+log_socket_type	<%= scope['sympa::log_socket_type'] %>
+log_level	<%= scope['sympa::log_level'] %>
+
+###\\\\ Receiving ////###
+default_max_list_members	<%= scope['sympa::default_max_list_members'] %>
+max_size	<%= scope['sympa::max_size'] %>
+reject_mail_from_automates_feature	<%= scope.call_function('bool2str', scope['sympa::reject_mail_from_automates_feature'], 'on', 'off') %>
+sympa_priority	<%= scope['sympa::sympa_priority'] %>
+request_priority	<%= scope['sympa::request_priority'] %>
+owner_priority	<%= scope['sympa::owner_priority'] %>
+default_list_priority	<%= scope['sympa::default_list_priority'] %>
+
+###\\\\ Sending related ////###
+<%- if scope['sympa::remove_headers'].length() > 0 %>
+remove_headers	<%= @remove_headers_txt %>
+<% end -%>
+<%- if scope['sympa::rfc2369_header_fields'].length() > 0 %>
+rfc2369_header_fields	<%= @rfc2369_header_fields_txt %>
+<% end -%>
+sympa_packet_priority	<%= scope['sympa::sympa_packet_priority'] %>
+bulk_fork_threshold	<%= scope['sympa::bulk_fork_threshold'] %>
+bulk_max_count	<%= scope['sympa::bulk_max_count'] %>
+bulk_lazytime	<%= scope['sympa::bulk_lazytime'] %>
+bulk_sleep	<%= scope['sympa::bulk_sleep'] %>
+bulk_wait_to_fork	<%= scope['sympa::bulk_wait_to_fork'] %>
+sendmail	<%= scope['sympa::sendmail'] %>
+log_smtp	<%= scope.call_function('bool2str', scope['sympa::log_smtp'], 'on', 'off') %>
+maxsmtp	<%= scope['sympa::maxsmtp'] %>
+nrcpt	<%= scope['sympa::nrcpt'] %>
+avg	<%= scope['sympa::avg'] %>
+
+###\\\\ Privileges ////###
+create_list	<%= scope['sympa::create_list'] %>
+<%- if scope['sympa::use_blacklist'].length() > 0 %>
+use_blacklist	<%= @use_blacklist_txt %>
+<% end -%>
+<%- if scope['sympa::owner_domain'].length() > 0 %>
+owner_domain	<%= @owner_domain_txt %>
+<% end -%>
+owner_domain_min	<%= scope['sympa::owner_domain_min'] %>
+
+###\\\\ Archives ////###
+process_archive	<%= scope['sympa::process_archive'] %>
+<%- if scope['sympa::custom_archiver'] %>
+custom_archiver	<%= scope['sympa::custom_archiver'] %>
+<% end -%>
+mhonarc	<%= scope['sympa::mhonarc'] %>
+
+###\\\\ Bounce management and tracking ////###
+bounce_warn_rate	<%= scope['sympa::bounce_warn_rate'] %>
+bounce_halt_rate	<%= scope['sympa::bounce_halt_rate'] %>
+welcome_return_path	<%= scope['sympa::welcome_return_path'] %>
+remind_return_path	<%= scope['sympa::remind_return_path'] %>
+expire_bounce_task	<%= scope['sympa::expire_bounce_task'] %>
+
+###\\\\ Automatic lists ////###
+<%- if scope['sympa::automatic_list_families'] %>
+automatic_list_families	<%= scope['sympa::automatic_list_families'] %>
+<% end -%>
+parsed_family_files	<%= @parsed_family_files_txt %>
+
+###\\\\ Tag based spam filtering ////###
+antispam_tag_header_name	<%= scope['sympa::antispam_tag_header_name'] %>
+antispam_tag_header_spam_regexp	<%= scope['sympa::antispam_tag_header_spam_regexp'] %>
+antispam_tag_header_ham_regexp	<%= scope['sympa::antispam_tag_header_spam_regexp'] %>
+spam_status	<%= scope['sympa::spam_status'] %>
+
+###\\\\ Directories ////###
+home	<%= scope['sympa::home'] %>
+etc	<%= scope['sympa::etc'] %>
+spool	<%= scope['sympa::spool'] %>
+queue	<%= scope['sympa::queue'] %>
+queuemod	<%= scope['sympa::queuemod'] %>
+queuedigest	<%= scope['sympa::queuedigest'] %>
+queueauth	<%= scope['sympa::queueauth'] %>
+queueoutgoing	<%= scope['sympa::queueoutgoing'] %>
+queuesubscribe	<%= scope['sympa::queuesubscribe'] %>
+queuetopic	<%= scope['sympa::queuetopic'] %>
+queuebounce	<%= scope['sympa::queuebounce'] %>
+queuetask	<%= scope['sympa::queuetask'] %>
+queueautomatic	<%= scope['sympa::queueautomatic'] %>
+queuebulk	<%= scope['sympa::queuebulk'] %>
+viewmail_dir	<%= scope['sympa::viewmail_dir'] %>
+bounce_path	<%= scope['sympa::bounce_path'] %>
+arc_path	<%= scope['sympa::arc_path'] %>
+
+###\\\\ Miscelaneous ////###
+email	<%= scope['sympa::email'] %>
+<%- if scope['sympa::custom_robot_parameter'] %>
+custom_robot_parameter	<%= scope['sympa::custom_robot_parameter'] %>
+<% end -%>
+cache_list_config	<%= scope['sympa::cache_list_config'] %>
+logs_expiration_period	<%= scope['sympa::logs_expiration_period'] %>
+umask	<%= scope['sympa::umask'] %>
+cookie	<%= scope['sympa::cookie'] %>
+
+###\\\\ Web interface parameters ////###
+wwsympa_url	<%= scope['sympa::wwsympa_url'] %>
+<%- if scope['sympa::http_host'] %>
+http_host	<%= scope['sympa::http_host'] %>
+<% end -%>
+static_content_url	<%= scope['sympa::static_content_url'] %>
+static_content_path	<%= scope['sympa::static_content_path'] %>
+log_facility	<%= scope['sympa::log_facility'] %>
+
+###\\\\ Web interface parameters: Appearances ////###
+default_home	<%= scope['sympa::default_home'] %>
+archive_default_index	<%= scope['sympa::archive_default_index'] %>
+review_page_size	<%= scope['sympa::review_page_size'] %>
+viewlogs_page_size	<%= scope['sympa::viewlogs_page_size'] %>
+
+###\\\\ Web interface parameters: Miscelaneous ////###
+cookie_domain	<%= scope['sympa::cookie_domain'] %>
+cookie_expire	<%= scope['sympa::cookie_expire'] %>
+cookie_refresh	<%= scope['sympa::cookie_refresh'] %>
+<%- if scope['sympa::default_shared_quota'] %>
+default_shared_quota	<%= scope['sympa::default_shared_quota'] %>
+<% end -%>
+use_html_editor	<%= scope.call_function('bool2str', scope['sympa::use_html_editor'], 'on', 'off') %>
+<%- if scope['sympa::use_html_editor'] %>
+html_editor_url	<%= scope['sympa::html_editor_url'] %>
+html_editor_init	<%= scope['sympa::html_editor_init'] %>
+<% end -%>
+<%- if scope['sympa::htmlarea_url'] %>
+htmlarea_url	<%= scope['sympa::htmlarea_url'] %>
+<% end -%>
+max_wrong_password	<%= scope['sympa::max_wrong_password'] %>
+password_case	<%= scope['sympa::password_case'] %>
+<%- if scope['sympa::reporting_spam_script_path'] %>
+reporting_spam_script_path	<%= scope['sympa::reporting_spam_script_path'] %>
+<% end -%>
+
+###\\\\ S/MIME and TLS ////###
+cafile <%= scope['sympa::cafile'] %>
+<%- if scope['sympa::capath'] %>
+capath	<%= scope['sympa::capath'] %>
+<% end -%>
+<%- if scope['sympa::key_passwd'] %>
+key_passwd	<%= scope['sympa::key_passwd'] %>
+<% end -%>
+<%- if scope['sympa::ssl_cert_dir'] %>
+ssl_cert_dir	<%= scope['sympa::ssl_cert_dir'] %>
+<% end -%>
+
+###\\\\ Data sources setup ////###
+default_sql_fetch_timeout	<%= scope['sympa::default_sql_fetch_timeout'] %>
+
+###\\\\ DKIM ////###
+<%- if scope['sympa::dkim_feature'] %>
+dkim_feature	on
+dkim_add_signature_to	<%= @dkim_add_signature_to_txt %>
+dkim_private_key_path	<%= scope['sympa::dkim_private_key_path'] %>
+dkim_signature_apply_on	<%= @dkim_signature_apply_on_txt %>
+dkim_signer_domain	<%= scope['sympa::dkim_signer_domain'] %>
+dkim_signer_identity	<%= scope['sympa::dkim_signer_identity'] %>
+dkim_selector	<%= scope['sympa::dkim_selector'] %>
+<% else %>
+dkim_feature	off
+<% end -%>
+
+###\\\\ Antivirus plug-in ////###
+<%- if scope['sympa::antivirus_path'] %>
+antivirus_path	<%= scope['sympa::antivirus_path'] %>
+<% end -%>
+<%- if scope['sympa::antivirus_args'] %>
+antivirus_args	<%= scope['sympa::antivirus_args'] %>
+<% end -%>
+
+###\\\\ Password validation ////###
+<%- if scope['sympa::password_validation'] %>
+password_validation	<%= scope['sympa::password_validation'] %>
+<% end -%>
+
+###\\\\ Authentication with LDAP ////###
+<%- if scope['sympa::ldap_force_canonical_email'] %>
+ldap_force_canonical_email	1
+<% end -%>
