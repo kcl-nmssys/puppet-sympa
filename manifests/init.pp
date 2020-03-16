@@ -25,7 +25,7 @@ class sympa (
   Optional[String] $db_additional_user_fields = undef,
   String $syslog = 'mail',
   String $log_socket_type = 'unix',
-  Integer[0,3] $loglevel = 0,
+  Integer[0,3] $log_level = 0,
   Integer $default_max_list_members = 0,
   Integer $max_size = 5242880,
   Boolean $reject_mail_from_automates_feature = true,
