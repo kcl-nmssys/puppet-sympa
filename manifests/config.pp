@@ -43,4 +43,22 @@ class sympa::config {
       show_diff => false,
       notify    => $sympa::service_name;
   }
+
+  if $sympa::manage_db and $sympa::db_type == 'mysql' {
+    mysql::db {
+      $sympa::db_name:
+        host     => $sympa::db_host,
+        user     => $sympa::db_user,
+        password => $sympa::db_passwd,
+        grant    => ['ALL'],
+        notify   => Exec['Initialise Sympa database'];
+    }
+
+    exec {
+      'Initialise Sympa database':
+        user        => 'root',
+        command     => '/usr/bin/sympa --health_check',
+        refreshonly => true;
+    }
+  }
 }
