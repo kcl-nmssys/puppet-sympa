@@ -41,7 +41,7 @@ class sympa::config {
       mode      => '0640',
       content   => template('sympa/sympa.conf.erb'),
       show_diff => false,
-      notify    => $sympa::service_name;
+      notify    => Service[$sympa::service_name];
   }
 
   if $sympa::manage_db and $sympa::db_type == 'mysql' {
