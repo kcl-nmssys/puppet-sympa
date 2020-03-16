@@ -5,7 +5,7 @@ class sympa::config {
       enable => true;
   }
 
-  $listmasters_txt             = join($sympa::listmasters, ',')
+  $listmaster_txt              = join($sympa::listmaster, ',')
   $supported_lang_txt          = join($sympa::supported_lang, ',')
   $remove_headers_txt          = join($sympa::remove_headers, ',')
   $rfc2369_header_fields_txt   = join($sympa::rfc2369_header_fields, ',')

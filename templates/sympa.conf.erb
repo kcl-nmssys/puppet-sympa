@@ -1,7 +1,7 @@
 # Puppet managed file
 
 ###\\\\ Service description ////###
-domain	<%= scope['sympa::mail_domain'] %>
+domain	<%= scope['sympa::public_name'] %>
 listmaster	<%= @listmaster_txt %>
 lang	<%= scope['sympa::language'] %>
 <%- if scope['sympa::supported_lang'].length() > 0 %>
