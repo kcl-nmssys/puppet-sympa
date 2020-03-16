@@ -39,7 +39,7 @@ class sympa::config {
       owner     => 'root',
       group     => 'sympa',
       mode      => '0640',
-      content   => template('sympa/sympa.conf.erb')
+      content   => template('sympa/sympa.conf.erb'),
       show_diff => false,
       notify    => $sympa::service_name;
   }
