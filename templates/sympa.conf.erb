@@ -9,7 +9,7 @@ supported_lang	<%= @supported_lang_txt %>
 <% end -%>
 title	<%= scope['sympa::service_title'] %>
 gecos	<%= scope['sympa::gecos'] %>
-legacy_character_support_feature	<%= scope.call_function('bool2str', (scope['sympa::legacy_character_support_feature'], 'on', 'off')) %>
+legacy_character_support_feature	<%= scope.call_function('bool2str', [scope['sympa::legacy_character_support_feature'], 'on', 'off']) %>
 
 ###\\\\ Da	ase related ////###
 db_type	<%= scope['sympa::db_type'] %>
@@ -36,7 +36,7 @@ log_level	<%= scope['sympa::log_level'] %>
 ###\\\\ Receiving ////###
 default_max_list_members	<%= scope['sympa::default_max_list_members'] %>
 max_size	<%= scope['sympa::max_size'] %>
-reject_mail_from_automates_feature	<%= scope.call_function('bool2str', (scope['sympa::reject_mail_from_automates_feature'], 'on', 'off')) %>
+reject_mail_from_automates_feature	<%= scope.call_function('bool2str', [scope['sympa::reject_mail_from_automates_feature'], 'on', 'off']) %>
 sympa_priority	<%= scope['sympa::sympa_priority'] %>
 request_priority	<%= scope['sympa::request_priority'] %>
 owner_priority	<%= scope['sympa::owner_priority'] %>
@@ -56,7 +56,7 @@ bulk_lazytime	<%= scope['sympa::bulk_lazytime'] %>
 bulk_sleep	<%= scope['sympa::bulk_sleep'] %>
 bulk_wait_to_fork	<%= scope['sympa::bulk_wait_to_fork'] %>
 sendmail	<%= scope['sympa::sendmail'] %>
-log_smtp	<%= scope.call_function('bool2str', scope['sympa::log_smtp'], 'on', 'off') %>
+log_smtp	<%= scope.call_function('bool2str', [scope['sympa::log_smtp'], 'on', 'off']) %>
 maxsmtp	<%= scope['sympa::maxsmtp'] %>
 nrcpt	<%= scope['sympa::nrcpt'] %>
 avg	<%= scope['sympa::avg'] %>
@@ -148,7 +148,7 @@ cookie_refresh	<%= scope['sympa::cookie_refresh'] %>
 <%- if scope['sympa::default_shared_quota'] %>
 default_shared_quota	<%= scope['sympa::default_shared_quota'] %>
 <% end -%>
-use_html_editor	<%= scope.call_function('bool2str', (scope['sympa::use_html_editor'], 'on', 'off')) %>
+use_html_editor	<%= scope.call_function('bool2str', [scope['sympa::use_html_editor'], 'on', 'off']) %>
 <%- if scope['sympa::use_html_editor'] %>
 html_editor_url	<%= scope['sympa::html_editor_url'] %>
 html_editor_init	<%= scope['sympa::html_editor_init'] %>
