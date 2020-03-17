@@ -94,7 +94,7 @@ class sympa::config {
       'Initialise Sympa database':
         user        => 'root',
         command     => 'sympa --health_check',
-        path        => ['/bin', '/usr/bin']
+        path        => ['/bin', '/usr/bin'],
         refreshonly => true;
     }
   }
