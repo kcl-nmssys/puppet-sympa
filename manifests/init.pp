@@ -3,7 +3,7 @@ class sympa (
   String $tls_privatekey_content,
   Array[String] $listmaster,
   Stdlib::Fqdn $public_name = $facts['fqdn'],
-  String $package_name = 'sympa',
+  Variant[String, Array[String]] $package_name = $sympa::params::package_name,
   String $service_name = 'sympa',
   String $tls_certificate_path = $sympa::params::tls_certificate_path,
   String $tls_privatekey_path = $sympa::params::tls_privatekey_path,

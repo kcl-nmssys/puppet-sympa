@@ -1,6 +1,6 @@
 class sympa::install {
   package {
-    $sympa::package_name:
+    flatten([$sympa::package_name]):
       ensure => 'present';
   }
 }
