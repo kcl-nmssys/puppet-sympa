@@ -93,8 +93,8 @@ class sympa::config {
     exec {
       'Initialise Sympa database':
         user        => 'root',
-        command     => 'sympa --health_check',
-        path        => ['/bin', '/usr/bin'],
+        command     => 'sympa.pl --health_check',
+        path        => ['/bin', '/usr/bin', '/sbin', '/usr/sbin'],
         refreshonly => true;
     }
   }
