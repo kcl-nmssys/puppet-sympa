@@ -1,6 +1,4 @@
 class sympa (
-  String $tls_certificate_content,
-  String $tls_privatekey_content,
   Array[String] $listmaster,
   Boolean $soap_enabled = false,
   Stdlib::Fqdn $public_name = $facts['fqdn'],
