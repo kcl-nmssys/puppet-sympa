@@ -128,6 +128,7 @@ class sympa (
   Optional[String] $password_validation = undef,
   Boolean $ldap_force_canonical_email = true,
   String $aliases_program = 'postalias',
+  Hash[String, Hash[String, String]] $topics = {},
 ) inherits sympa::params {
 
   contain ::sympa::install

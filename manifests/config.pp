@@ -58,6 +58,14 @@ class sympa::config {
       group   => 'root',
       mode    => '0444',
       content => template('sympa/httpd-sympa.conf.erb');
+
+    "${sympa::etc}/topics.conf":
+      ensure  => 'present',
+      owner   => 'root',
+      group   => 'sympa',
+      mode    => '0640',
+      content => template('sympa/topics.conf.erb'),
+      notify  => Service[$all_services];
   }
 
   if $sympa::aliases_program == 'postalias' {
