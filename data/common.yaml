@@ -8,10 +8,10 @@ sympa::topics:
     title.ja: 報道と出版
     visibility: noconceal
   arts:
-    title: Arts: and: Humanities
-    title.de: Kunst: und: Kultur
-    title.fr: Art: et: Culture
-    title.hu: Művészet,: kultúra
+    title: Arts and Humanities
+    title.de: Kunst und Kultur
+    title.fr: Art et Culture
+    title.hu: Művészet, kultúra
     title.ja: 芸術と文化
     visibility: noconceal
   economics:
