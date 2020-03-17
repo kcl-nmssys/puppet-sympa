@@ -60,6 +60,26 @@ class sympa::config {
       content => template('sympa/httpd-sympa.conf.erb');
   }
 
+  if $sympa::aliases_program == 'postalias' {
+    file {
+      "${sympa::etc}/aliases.sympa.postfix":
+        ensure  => 'present',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0444',
+        content => template('sympa/aliases.sympa.postfix.erb'),
+        notify  => Exec['Setup Sympa postfix aliases'];
+    }
+
+    exec {
+      'Setup Sympa postfix aliases':
+        user        => 'root',
+        command     => "postalias hash:${sympa::etc}/aliases.sympa.postfix",
+        path        => ['/sbin', '/usr/sbin'],
+        refreshonly => true;
+    }
+  }
+
   if $sympa::manage_db and $sympa::db_type == 'mysql' {
     mysql::db {
       $sympa::db_name:
@@ -73,7 +93,8 @@ class sympa::config {
     exec {
       'Initialise Sympa database':
         user        => 'root',
-        command     => '/usr/bin/sympa --health_check',
+        command     => 'sympa --health_check',
+        path        => ['/bin', '/usr/bin']
         refreshonly => true;
     }
   }
