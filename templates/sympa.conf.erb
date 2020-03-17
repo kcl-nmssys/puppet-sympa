@@ -1,7 +1,7 @@
 # Puppet managed file
 
 ###\\\\ Service description ////###
-domain	<%= scope['sympa::public_name'] %>
+domain	<%= scope['sympa::mail_name'] %>
 listmaster	<%= @listmaster_txt %>
 lang	<%= scope['sympa::language'] %>
 <%- if scope['sympa::supported_lang'].length() > 0 %>
@@ -128,7 +128,7 @@ umask	<%= scope['sympa::umask'] %>
 cookie	<%= scope['sympa::cookie'] %>
 
 ###\\\\ Web interface parameters ////###
-wwsympa_url	https://<%= scope['sympa::public_name'] %><%= scope['sympa::wwsympa_url'] %>
+wwsympa_url	https://<%= scope['sympa::http_name'] %><%= scope['sympa::wwsympa_url'] %>
 <%- if scope['sympa::http_host'] %>
 http_host	<%= scope['sympa::http_host'] %>
 <% end -%>

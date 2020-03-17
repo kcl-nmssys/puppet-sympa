@@ -1,8 +1,8 @@
 # Puppet managed file
 # Robot aliases for Sympa.
-sympa:              "| /usr/libexec/sympa/queue sympa@<%= scope['sympa::public_name'] %>"
-listmaster:         "| /usr/libexec/sympa/queue listmaster@<%= scope['sympa::public_name'] %>"
-bounce:             "| /usr/libexec/sympa/bouncequeue sympa@<%= scope['sympa::public_name'] %>"
-abuse-feedback-report: "| /usr/libexec/sympa/bouncequeue sympa@<%= scope['sympa::public_name'] %>"
+sympa:              "| /usr/libexec/sympa/queue sympa@<%= scope['sympa::mail_name'] %>"
+listmaster:         "| /usr/libexec/sympa/queue listmaster@<%= scope['sympa::mail_name'] %>"
+bounce:             "| /usr/libexec/sympa/bouncequeue sympa@<%= scope['sympa::mail_name'] %>"
+abuse-feedback-report: "| /usr/libexec/sympa/bouncequeue sympa@<%= scope['sympa::mail_name'] %>"
 sympa-request:      postmaster
 sympa-owner:        postmaster
