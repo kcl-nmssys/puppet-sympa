@@ -1,0 +1,1 @@
+FCGI_OPTS="-M 0600 -U apache"

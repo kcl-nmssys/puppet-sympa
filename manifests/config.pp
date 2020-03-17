@@ -1,6 +1,7 @@
 class sympa::config {
+  $all_services = [$sympa::service_name + $sympa::wwservice_name]
   service {
-    $sympa::service_name:
+    $all_services:
       ensure => 'running',
       enable => true;
   }
@@ -28,7 +29,7 @@ class sympa::config {
       group  => 'sympa',
       mode   => '0751';
 
-    [$sympa::queue]:
+    [$sympa::queue, $sympa::queuemod, $sympa::queuedigest, $sympa::queueauth, $sympa::queueoutgoing, $sympa::queuesubscribe, $sympa::queuetopic, $sympa::queuebounce, $sympa::queuetask, $sympa::queueautomatic]:
       ensure => 'directory',
       owner  => 'sympa',
       group  => 'sympa',
@@ -41,7 +42,22 @@ class sympa::config {
       mode      => '0640',
       content   => template('sympa/sympa.conf.erb'),
       show_diff => false,
-      notify    => Service[$sympa::service_name];
+      notify    => Service[$all_services];
+
+    '/etc/sysconfig/sympa':
+      ensure => 'present',
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0444',
+      source => 'puppet:///modules/sympa/sysconfig-sympa',
+      notify => Service[$sympa::wwservice_name];
+
+    '/etc/httpd/conf.d/sympa.conf':
+      ensure  => 'present',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0444',
+      content => template('sympa/httpd-sympa.conf.erb');
   }
 
   if $sympa::manage_db and $sympa::db_type == 'mysql' {

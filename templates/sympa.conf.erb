@@ -127,7 +127,7 @@ umask	<%= scope['sympa::umask'] %>
 cookie	<%= scope['sympa::cookie'] %>
 
 ###\\\\ Web interface parameters ////###
-wwsympa_url	<%= scope['sympa::wwsympa_url'] %>
+wwsympa_url	https://<%= scope['sympa::public_name'] %><%= scope['sympa::wwsympa_url'] %>
 <%- if scope['sympa::http_host'] %>
 http_host	<%= scope['sympa::http_host'] %>
 <% end -%>

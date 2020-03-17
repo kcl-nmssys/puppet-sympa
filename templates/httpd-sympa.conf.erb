@@ -1,0 +1,24 @@
+# Puppet managed file
+<IfModule mod_proxy_fcgi.c>
+    <Location <%= scope['sympa::wwsympa_url'] %>>
+        SetHandler "proxy:unix:/var/run/sympa/wwsympa.socket|fcgi://"
+        Require all granted
+    </Location>
+<%- if scope['sympa::soap_enabled'] %>
+    <Location /sympasoap>
+        SetHandler "proxy:unix:/var/run/sympa/sympasoap.socket|fcgi://"
+        Require all granted
+    </Location>
+<% end -%>
+</IfModule>
+
+<Location /static-sympa>
+    Require all granted
+</Location>
+
+Alias <%= scope['sympa::static_content_url'] %>/css <%= scope['sympa::css_path'] %>
+Alias <%= scope['sympa::static_content_url'] %>/pictures <%= scope['sympa::pictures_path'] %>
+Alias <%= scope['sympa::static_content_url'] %> <%= scope['sympa::static_content_path'] %>
+
+RewriteEngine on
+RewriteRule ^/?$ /sympa [R=301]
