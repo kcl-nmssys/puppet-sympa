@@ -29,7 +29,7 @@ class sympa::config {
       group  => 'sympa',
       mode   => '0751';
 
-    [$sympa::queue, $sympa::queuemod, $sympa::queuedigest, $sympa::queueauth, $sympa::queueoutgoing, $sympa::queuesubscribe, $sympa::queuetopic, $sympa::queuebounce, $sympa::queuetask, $sympa::queueautomatic]:
+    [$sympa::queue, $sympa::queuemod, $sympa::queuedigest, $sympa::queueauth, $sympa::queueoutgoing, $sympa::queuesubscribe, $sympa::queuetopic, $sympa::queuebounce, $sympa::queuetask, $sympa::queueautomatic, $sympa::queuebulk, $sympa::viewmail_dir, $sympa::bounce_path, $sympa::arc_path]:
       ensure => 'directory',
       owner  => 'sympa',
       group  => 'sympa',
