@@ -1,5 +1,5 @@
 class sympa::config {
-  $all_services = [$sympa::service_name + $sympa::wwservice_name]
+  $all_services = [$sympa::service_name, $sympa::wwservice_name]
   service {
     $all_services:
       ensure => 'running',
