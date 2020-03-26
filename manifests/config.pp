@@ -17,9 +17,15 @@ class sympa::config {
   $dkim_signature_apply_on_txt = join($sympa::dkim_signature_apply_on, ',')
 
   file {
-    [$sympa::etc, $sympa::home]:
+    $sympa::etc:
       ensure => 'directory',
       owner  => 'root',
+      group  => 'sympa',
+      mode   => '0750';
+
+    $sympa::home:
+      ensure => 'directory',
+      owner  => 'sympa',
       group  => 'sympa',
       mode   => '0750';
 
