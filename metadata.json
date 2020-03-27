@@ -12,6 +12,12 @@
   ],
   "operatingsystem_support": [
     {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "7"
