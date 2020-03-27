@@ -2,9 +2,11 @@
   "name": "kclnmssys-sympa",
   "version": "0.1.0",
   "author": "King's College London",
-  "summary": "",
+  "summary": "Puppet module for Sympa mailing list manager",
   "license": "Apache-2.0",
-  "source": "",
+  "project_page": "https://github.com/kcl-nmssys/puppet-sympa",
+  "source": "https://github.com/kcl-nmssys/puppet-sympa",
+  "issues_url": "https://github.com/kcl-nmssys/puppet-sympa/issues",
   "dependencies": [
 
   ],
