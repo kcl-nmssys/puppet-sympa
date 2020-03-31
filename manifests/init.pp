@@ -4,6 +4,7 @@ class sympa (
   Stdlib::Fqdn $mail_name = $facts['fqdn'],
   Stdlib::Fqdn $http_name = $facts['fqdn'],
   Variant[String, Array[String]] $package_name = $sympa::params::package_name,
+  Optional[Array[String]] $package_deps = $sympa::params::package_deps,
   String $service_name = 'sympa',
   String $wwservice_name = 'wwsympa',
   String $tls_certificate_path = $sympa::params::tls_certificate_path,
