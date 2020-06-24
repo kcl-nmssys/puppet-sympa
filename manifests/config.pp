@@ -19,8 +19,8 @@ class sympa::config {
   file {
     $sympa::etc:
       ensure => 'directory',
-      owner  => 'root',
-      group  => 'sympa',
+      owner  => 'sympa',
+      group  => 'mail',
       mode   => '0750';
 
     [$sympa::home, $sympa::spool, $sympa::var_dir, $sympa::queue, $sympa::queuemod, $sympa::queuedigest, $sympa::queueauth, $sympa::queueoutgoing, $sympa::queuesubscribe, $sympa::queuetopic, $sympa::queuebounce, $sympa::queuetask, $sympa::queueautomatic, $sympa::queuebulk, $sympa::viewmail_dir, $sympa::bounce_path, $sympa::arc_path]:
@@ -31,9 +31,9 @@ class sympa::config {
 
     $sympa::config_file:
       ensure    => 'present',
-      owner     => 'root',
-      group     => 'sympa',
-      mode      => '0640',
+      owner     => 'sympa',
+      group     => 'mail',
+      mode      => '0440',
       content   => template('sympa/sympa.conf.erb'),
       show_diff => false,
       notify    => Service[$all_services];
